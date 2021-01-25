@@ -2,7 +2,7 @@
 ##################### ECS service ALB ####################
 
 resource "aws_alb" "main" {
-  name            = "demo-load-balancer"
+  name            = "hello-load-balancer"
   subnets         = aws_subnet.alb.*.id
   security_groups = [aws_security_group.alb.id]
 }
