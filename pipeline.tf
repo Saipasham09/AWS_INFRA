@@ -154,7 +154,7 @@ POLICY
 
 }
 
-# S3 Bucket stores meta data of whole pipline stages 
+# S3 Bucket stores meta data of whole pipeline stages 
 resource "aws_s3_bucket" "pipeline" {
   bucket = "hello-app-pipeline-${data.aws_caller_identity.current.account_id}"
   acl    = "private"
