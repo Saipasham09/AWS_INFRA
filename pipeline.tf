@@ -156,8 +156,8 @@ POLICY
 
 # S3 Bucket stores meta data of whole pipeline stages 
 resource "aws_s3_bucket" "pipeline" {
-  bucket = "hello-app-pipeline-${data.aws_caller_identity.current.account_id}"
-  acl    = "private"
+  bucket        = "hello-app-pipeline-${data.aws_caller_identity.current.account_id}"
+  acl           = "private"
   force_destroy = true
 }
 
@@ -169,7 +169,7 @@ resource "aws_codepipeline" "codepipeline" {
     location = aws_s3_bucket.pipeline.bucket
     type     = "S3"
   }
- # Pulls the source code 
+  # Pulls the source code 
   stage {
     name = "Source"
 
@@ -190,7 +190,7 @@ resource "aws_codepipeline" "codepipeline" {
       }
     }
   }
-# builds the docker image for the hello_app
+  # builds the docker image for the hello_app
   stage {
     name = "BuildDocker"
 
@@ -207,7 +207,7 @@ resource "aws_codepipeline" "codepipeline" {
       }
     }
   }
-# Deploys the new build image to the ECS Fargate
+  # Deploys the new build image to the ECS Fargate
   stage {
     name = "Deploy"
 
